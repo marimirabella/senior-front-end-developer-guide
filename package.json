@@ -1,0 +1,60 @@
+{
+  "name": "senior-front-end-developer-interview-guide",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "ts": "tsc --p ./tsconfig.json --noEmit",
+    "format": "prettier --write --ignore-unknown \"**/*.{js,ts,tsx,css,mdx}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "**/*.{css,mdx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@formatjs/intl-localematcher": "0.2.32",
+    "@mui/icons-material": "5.11.16",
+    "@mui/material": "5.12.3",
+    "@next/mdx": "13.4.1",
+    "eslint": "8.38.0",
+    "i18next": "22.4.10",
+    "i18next-resources-to-backend": "1.1.2",
+    "negotiator": "0.6.3",
+    "next": "13.4.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "12.2.2",
+    "react-syntax-highlighter": "15.5.0",
+    "server-only": "0.0.1",
+    "styled-components": "5.3.10"
+  },
+  "devDependencies": {
+    "@types/mdx": "2.0.5",
+    "@types/negotiator": "0.6.1",
+    "@types/node": "20.1.0",
+    "@types/react-syntax-highlighter": "15.5.6",
+    "@types/styled-components": "5.1.26",
+    "@typescript-eslint/eslint-plugin": "5.59.2",
+    "@typescript-eslint/parser": "5.59.2",
+    "eslint-config-next": "13.4.1",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-import": "2.27.5",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2",
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
+  }
+}

@@ -1,0 +1,159 @@
+import { IconList } from '../../components';
+
+### Instead of typescript - What we can use?
+
+Linter, setter/getter, Object.freeze
+
+<br />
+
+## Functional Programming vs OOP paradigms, composition over inheritance
+
+<br />
+
+**Inheritance** - when you design your types around what they are, which makes it a very strict pattern.
+
+While the **Composition** is when you design your types around what they do, which makes it more flexible and reusable.<br/>
+
+<br />
+
+### Comparison
+
+- FP is better to avoid unnecessary changes in the future. Immutability first of all, flexibility, easy to do.
+
+- Changing parent class can lead to many issues - shareable state => hard to maintain objects in OOP while increasing level of inheritance.
+
+- _Gorilla/Banana problem_ - when you request the banana, but you get the gorilla holding the banana and the entire jungle with it.
+
+- In inheritance it is harder to make changes after a some time, while in composition it is easy. For instance, what if the requirements were changed and some method should not be invoked on a lot of instances which have been inherited from the parent.
+
+- Inheritance encourages you to build taxonomy of objects very early on project. It is more likely to make big design mistakes while doing that because it is not possible to predict the future.
+
+- Use classes when you need to create a **lot lot lot** of objects because classes have a bit better performance (like creating more than 10000 Instances per a frame).
+
+<br />
+
+## Reactive programming
+
+<br />
+
+(eg. RXJS) - is programming with asynchronous data streams. The chain of events and messages can be mapped and listened. Think of RxJS as Lodash for events.
+
+A stream is a sequence of ongoing events ordered in time. It can be anything like user inputs, button clicks or data structures. You can listen to a stream and react to it accordingly. You can use functions to combine, filter or map streams.
+
+Stream emits three things during its timeline: a value, an error, and a complete
+signal.
+
+Both promise and observables are built to solve problems around async (to avoid _“callback
+hell”_).
+
+An **observable**, by definition, is a **data producer**. The special kind can produce data
+over time.<br />
+A **Subject**, on the other hand, can act as both - a **data producer** and a **data consumer**.
+
+**Subject**. All of its subscribers will receive the _same data_. **Observable**. Each subscription
+causes an independent execution of the observable => _different values_
+
+Some facts:<br />
+
+- An Observable is just a function, with a few special characteristics. It takes in an “observer” (an object with `next`, `error` and `complete` methods on it => `error` and `complete` are optional), and returns cancellation logic.
+
+  ```js
+  const button = document.querySelector('button');
+  const observer = {
+    next: function (value) {
+      console.log(value);
+    },
+    error: function (err) {
+      console.error(err);
+    },
+    complete: function () {
+      console.log('Completed');
+    },
+  };
+
+  // Create an Observable from event
+  const observable = Rx.Observable.fromEvent(button, 'click');
+  // Subscribe to begin listening for async result
+  const subscription = observable.subscribe(observer);
+  // Later:
+  // This cancels the ongoing Observable execution which
+  // was started by calling subscribe with an Observer.
+  subscription.unsubscribe();
+  ```
+
+- `subscribe` returns a subscription, on which a consumer can be called with `unsubscribe` to cancel the subscription and tear down the producer.
+
+- An Observable instance begins publishing values only when someone subscribes to it. You can subscribe by calling the `subscribe` method of the instance. To receive notifications an observer object should be passed.
+
+- RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), **Subjects are multicast**.
+
+  The point is that it is possible to create some sequence of operations and there
+  is no need to wait for them to be returned. Like when you need to fetch a limited
+  sequence of requests and batch them together. You set the limit and get the required
+  sequence at the time you request it.
+
+  ```js
+  const subject = new Rx.Subject();
+
+  subject.subscribe({
+    next: (v) => console.log('observerA: ' + v),
+  });
+  subject.subscribe({
+    next: (v) => console.log('observerB: ' + v),
+  });
+
+  subject.next(1);
+  subject.next(2);
+
+  // output
+  // observerA: 1
+  // observerB: 1
+  // observerA: 2
+  // observerB: 2
+  ```
+
+- RxJS can be used both in the browser or on the server-side using Node.js.<br/>
+
+Real examples: eventEmitter in Angular, setter/getter, proxy, event emitter; excel - cell changed and other cells change.
+
+<br />
+
+### Pros/Cons
+
+#### Pros
+
+<IconList iconType="plus" mb={1}>
+  Streams, merging
+  <br />
+  Writing declarative code
+  <br />
+  Avoiding callback hell
+  <br />
+  Threading and asynchronous mechanisms implementation
+  <br />
+  Purity, etc.
+  <br />
+</IconList>
+
+#### Cons
+
+<IconList iconType="minus">
+  Hard debugging
+  <br />
+  Making documentation
+  <br />
+  Memory consumption (need to unsubscribe)
+  <br />
+  Time to start
+  <br />
+  Managing concurrency
+  <br />
+  Data immutability required
+  <br />
+  Complexity of testing
+  <br />
+  Learning curve
+  <br />
+</IconList>
+
+<br />

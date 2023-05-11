@@ -1,0 +1,136 @@
+import { IconList } from '../../components';
+
+## Object Oriented Programming
+
+<br />
+
+**OOP** is a programming paradigm that relies on the concept of classes and objects. It is used to structure a software program into simple, reusable classes, which are used to create individual instances of objects. These objects contain properties and methods. It provides capabilities such as inheritance, polymorphism, encapsulation, abstraction.
+
+**The basic idea of OOP** is that we use objects to model real world things that we want to represent inside our programs, and/or provide a simple way to access functionality that would otherwise be hard or impossible to make use of. Everything is an object for better code structure and reusing.
+
+The main deal with OOP is the ability to encapsulate data from outsiders.
+
+**Advantages** - It provides an efficient mechanism for code reuse using _inheritance_ which reduces redundancy.
+
+<br />
+
+### Pros/Cons
+
+#### Pros
+
+<IconList iconType="plus" mb={1}>
+  All code is divided into parts and it is easier to read it and maintain.
+  <br />
+  Therefore, it allows easily to extend and decompose code (abstraction).
+  <br />
+  Reusable OOP objects can be used across the application.
+  <br />
+</IconList>
+
+#### Cons
+
+<IconList iconType="minus">
+  OOP commonly depends upon a shareable state. Statements should be executed in
+  a particular order as it would lead to unexpected results. The unfortunate
+  result of so many objects and methods existing within the same state and being
+  accessed in an entirely undetermined order can lead to unexpected results.
+  <br />
+  Does not support parallel programming.
+  <br />
+  **The duplication by necessity problem**. Due to inflexible hierarchies, new
+  use cases are often result in duplication, rather than adapting existing code.
+  <br />
+  **Banana/Gorilla problem**. When you inherit from a class, you get everything,
+  even if you do not want it.
+</IconList>
+
+<br />
+
+### Principles
+
+- **Encapsulation** means containing all important information inside an object, and only exposing selected information to the outside world. Secondly, we protect our state from the mutation.
+
+  > _Example_ <br />
+  > When creating a class to represent a person, you may define private data,
+  > such as the person's Social Security Number. You can encapsulate this data as
+  > a private variable in the class, which means outside code can't access it. If
+  > you write a method in the person class to perform a bank transaction, the
+  > function could access the data variable as necessary. In this example, the
+  > person's private data is well-encapsulated within the class.
+
+- **Abstraction** allows hiding the implementation details and showing only the functionality to the users. It allows working with objects without need to know how they were implemented.<br/>
+
+  Class should provide a simple interface and hide details of the realization. An instance of abstract class can not be created. Also, an abstraction reduces duplication of code.<br/>
+
+  _An abstraction is more about design, encapsulation is about how to do._ <br/>
+
+  For instance, we use some library and we just know the api we need, we do not know its implementation.
+
+  > _Example_ <br />
+  > Consider a stereo system as an object with a complex logic board on the
+  > inside. The stereo system has buttons on the outside to allow for interaction
+  > with the object. When you press a button, the logic board completes a function
+  > to turn on the system, even though you can't see what happens inside the
+  > board.
+
+- **Inheritance** allows classes to inherit features of other classes. A new class automatically inhabits the same properties and functionalities as its parent class.<br/>
+
+  _Problems of changing state_ can be solved by `setter/getter, linter, Object.freeze, #privateField`.
+
+  > _Example_ <br />
+  > There is an animal class, which has common properties like name and methods
+  > like walk, poop, eat. In this class, all animals share similar properties and
+  > methods. You can create subclasses for different varieties of animals, such as
+  > dog and cat. These child classes inherit the properties of the animal class,
+  > meaning they share those same features.<br />
+
+- **Polymorphism** means designing objects to share behaviors. It allows the same method to execute different behaviors in two ways: method overriding and method overloading (means multiple forms).
+
+  > _Example_ <br />
+  > If you have a class called animal with two child classes, cat and dog, you
+  > can create a class function to make a noise. Using polymorphism, you can
+  > override this function inherited by the cat and dog child classes. Instead,
+  > you can make this function "meow" and "bark" for cat and dog, respectively.
+  > Depending on the type of animal object that passes through the interface, it
+  > either makes a "meow" or a "bark" noise.
+
+#### Dependency injection
+
+Is a technique in which an object receives other objects on which it depends, called dependencies.
+
+Classes often require references to other classes.
+
+> For example, a Car class might need a reference to an Engine class. These required classes are called dependencies, and in this example, the Car class depends on having an instance of the Engine class to run.
+
+Dependency or dependent means relying on something for support. As if I say we are relying too much on mobile phones then it means we are dependent on them.<br />
+
+When class A uses some functionality of class B, then its said that class A has a dependency of class B.
+
+There are basically _three types_ of dependency injection:
+
+- **Constructor injection**. The dependencies are provided through a class constructor.
+- **Setter injection**. The client exposes a setter method that the injector uses to inject the dependency.
+- **Interface injection**. The dependency provides an injector method that will inject the dependency into any client passed to it. Clients must implement an interface that exposes a setter method that accepts the dependency.
+
+In JS DI is usually used through classes or higher-order functions.
+
+**Inversion of control — the concept behind DI.** <br/>
+This states that a class should not configure its dependencies statically but should be configured by some other class from outside.
+
+<br />
+
+### How do you explain the difference between overloading and overriding?
+
+**Overloading** a method means that multiple methods share the same method name but have
+different arguments. However, in the case of **overriding**, the child class can redefine
+the implementation of a method by retaining the same arguments.
+
+Another difference is that the overloading is resolved at compile time while overriding is resolved at runtime.
+
+<br />
+
+### What is meant by abstract class?
+
+Can be defined as a **class that cannot be instantiated**, i.e. whose object reference cannot be created and contains within it one or more abstract methods.
+
+An abstract class is made of abstract methods. An abstract method is a method that can only be declared but has no implementation to it. When a subclass needs to use the methods, it needs to implement those methods.

@@ -1,0 +1,1 @@
+export { ProgrammingParadigmsContent } from './programmingParadigms';
